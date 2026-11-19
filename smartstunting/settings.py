@@ -3,14 +3,19 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "dev-only-change-this-before-deployment"
 DEBUG = True
+
 ALLOWED_HOSTS = [
+    "smart-stunting-django-9uxj.vercel.app",
     "smart-stunting-django-xnup.vercel.app",
     "localhost",
     "127.0.0.1",
 ]
+
 CSRF_TRUSTED_ORIGINS = [
+    "https://smart-stunting-django-9uxj.vercel.app",
     "https://smart-stunting-django-xnup.vercel.app",
 ]
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
