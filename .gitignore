@@ -7,6 +7,12 @@ __pycache__/
 .venv-*/
 venv/
 
+# Secrets and generated deployment files
+.env
+.env.*
+!.env.example
+/staticfiles/
+
 # Tool and OS caches
 .pytest_cache/
 .mypy_cache/
