@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% block title %}Beranda · SmartStunting{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow"><span class="live-dot"></span> SISTEM PAKAR FUZZY MAMDANI</span>
+    <h1>Setiap anak berhak tumbuh <em>optimal.</em></h1>
+    <p>Pahami gambaran prioritas penanganan stunting melalui data prevalensi dan tren. Dapatkan hasil analisis yang transparan beserta aturan dan rekomendasi tindak lanjut.</p>
+    <div class="actions"><a class="btn primary" href="{% url 'consultation' %}">Mulai konsultasi <span aria-hidden="true">→</span></a><a class="btn hero-link" href="{% url 'dashboard' %}">Jelajahi data</a></div>
+    <div class="hero-assurance"><span class="assurance-icon">✓</span> Analisis transparan · 12 aturan JIKA–MAKA</div>
+  </div>
+  <div class="hero-art" aria-label="Ilustrasi pertumbuhan dan pemantauan anak">
+    <div class="art-glow"></div>
+    <div class="growth-card">
+      <div class="growth-card-head"><span class="growth-icon">✳</span><span><b>Ruang tumbuh</b><small>Kenali, pantau, dampingi</small></span><span class="growth-status">AKTIF</span></div>
+      <div class="growth-illustration"><div class="sun"></div><div class="plant plant-left"><i></i><i></i><i></i></div><div class="plant plant-right"><i></i><i></i><i></i></div><div class="child-shape"><i></i><b></b><span></span></div><div class="growth-ground"></div></div>
+      <div class="growth-card-foot"><span><i class="foot-dot"></i> Data untuk langkah lebih tepat</span><span class="arrow-round">↗</span></div>
+    </div>
+    <div class="float-note"><span class="float-icon">⌁</span><span><b>Fuzzy Mamdani</b><small>2 variabel · 1 skor prioritas</small></span></div>
+    <span class="hero-spark spark-one">✳</span><span class="hero-spark spark-two">✦</span>
+  </div>
+</section>
+{% if error %}<div class="notice">Dataset tidak dapat dibaca: {{ error }}</div>{% else %}
+<section class="stats" aria-label="Ringkasan dataset"><div class="stat-item"><span class="stat-icon">⌖</span><strong>{{ total }}</strong><span>provinsi dalam dataset</span></div><div class="stat-item"><span class="stat-icon">◉</span><strong>{{ average }}%</strong><span>rata-rata prevalensi {{ last }}</span></div><div class="stat-item"><span class="stat-icon">↘</span><strong>{{ drop }}</strong><span>poin perubahan {{ first }}–{{ last }}</span></div><div class="stat-item"><span class="stat-icon">✦</span><strong class="stat-name">{{ top_province }}</strong><span>tertinggi {{ last }} · {{ top_value }}%</span></div></section>
+{% endif %}
+<section class="section">
+  <div class="section-heading"><div><span class="eyebrow">DARI DATA MENJADI AKSI</span><h2>Analisis yang mudah dipahami</h2></div><p>Kenali cara sistem mengolah data sebelum melihat hasilnya.</p></div>
+  <div class="three process-grid">
+    <article class="card process-card"><div class="process-top"><span class="step">01</span><span class="process-icon">⌁</span></div><h3>Masukkan data</h3><p>Gunakan angka prevalensi dan tren tahunan, atau pilih data provinsi yang tersedia.</p><span class="process-tag">2 variabel input</span></article>
+    <article class="card process-card"><div class="process-top"><span class="step">02</span><span class="process-icon">◇</span></div><h3>Evaluasi aturan</h3><p>Sistem mengevaluasi 12 aturan JIKA–MAKA menggunakan metode inferensi Mamdani.</p><span class="process-tag">Fuzzifikasi · Inferensi</span></article>
+    <article class="card process-card"><div class="process-top"><span class="step">03</span><span class="process-icon">↗</span></div><h3>Pahami prioritas</h3><p>Lihat skor, kategori, derajat keanggotaan, aturan aktif, dan saran tindak lanjut.</p><span class="process-tag">Skor 0–100</span></article>
+  </div>
+</section>
+<section class="home-cta"><div><span class="eyebrow">MULAI DARI LANGKAH KECIL</span><h2>Ubah data menjadi pemahaman.</h2><p>Coba konsultasi interaktif dan lihat bagaimana dua variabel membentuk prioritas.</p></div><a class="btn primary" href="{% url 'consultation' %}">Coba konsultasi <span aria-hidden="true">→</span></a></section>
+{% endblock %}

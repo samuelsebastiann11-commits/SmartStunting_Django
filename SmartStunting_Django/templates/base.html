@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}SmartStunting{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{% url 'home' %}"><span class="brand-icon" aria-hidden="true"><svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 40V24" stroke="#286B4F" stroke-width="2.8" stroke-linecap="round"/><path d="M24 32C17.8 32 13 27.8 13 21.7C19.2 21.7 24 25.9 24 32Z" fill="#6F9D61"/><path d="M24 27C24 20.7 28.5 16.4 35 16.4C35 22.9 30.7 27.4 24 27.4" fill="#347B58"/><path d="M10 39H38" stroke="#B6C987" stroke-width="2.8" stroke-linecap="round"/><circle cx="34.5" cy="10.5" r="4.5" fill="#E7B95C"/><path d="M11 17.5C11.8 14.4 14.1 12.1 17.1 11.2" stroke="#A8C477" stroke-width="2" stroke-linecap="round"/></svg></span><span><b>SmartStunting</b><small>Pantau tumbuh kembang, pahami prioritas</small></span></a>
+  <button class="menu-toggle" type="button" aria-label="Buka navigasi" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+  <nav class="nav">
+    <a class="{% if active == 'home' %}active{% endif %}" href="{% url 'home' %}">Beranda</a>
+    <a class="{% if active == 'consultation' %}active{% endif %}" href="{% url 'consultation' %}">Konsultasi</a>
+    <a class="{% if active == 'knowledge' %}active{% endif %}" href="{% url 'knowledge' %}">Basis Pengetahuan</a>
+    <a class="{% if active == 'quiz' %}active{% endif %}" href="{% url 'quiz' %}">Uji Dugaan</a>
+    <a class="{% if active == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+    <a class="{% if active == 'dataset' %}active{% endif %}" href="{% url 'dataset' %}">Dataset</a>
+  </nav>
+</header>
+<main class="container">
+  {% if messages %}{% for message in messages %}<div class="notice {{ message.tags }}">{{ message }}</div>{% endfor %}{% endif %}
+  {% block content %}{% endblock %}
+  <div class="disclaimer"><span aria-hidden="true">ⓘ</span><span><b>Catatan edukasi</b><br>Hasil merupakan estimasi dari tren data, bukan diagnosis medis dan bukan dasar keputusan kebijakan.</span></div>
+</main>
+<footer><span class="footer-mark" aria-hidden="true">✳</span><span>© 2026 SmartStunting</span><span class="footer-divider">·</span><span>Sistem Pakar Fuzzy Mamdani</span><span class="footer-divider">·</span><span>Aplikasi edukasi</span></footer>
+</body></html>

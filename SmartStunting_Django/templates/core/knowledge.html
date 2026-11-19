@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Basis Pengetahuan · SmartStunting{% endblock %}
+{% block content %}<div class="page-heading"><span class="eyebrow">MESIN INFERENSI</span><h1>Basis Pengetahuan</h1><p>Variabel, himpunan fuzzy, dan aturan yang menjadi dasar sistem pakar.</p></div>
+<div class="three">{% for spec in prev_specs %}<article class="card"><b>Prevalensi · {{ spec.name }}</b><p class="muted">Parameter trapezium: {{ spec.params }}</p></article>{% endfor %}</div>
+<div class="card"><h2>Matriks 12 aturan JIKA–MAKA</h2><div class="table-wrap"><table><tr><th>Prevalensi</th><th>Tren</th><th>Prioritas</th></tr>{% for p,t,o in rules %}<tr><td>{{ p }}</td><td>{{ t }}</td><td><span class="pill">{{ o }}</span></td></tr>{% endfor %}</table></div></div>
+<div class="three">{% for spec in trend_specs %}<article class="card"><b>Tren · {{ spec.name }}</b><p class="muted">Parameter: {{ spec.params }}</p></article>{% endfor %}</div>
+<div class="card"><h2>Metode inferensi</h2><ul><li>Model Mamdani, 2 input, 1 output, 12 aturan.</li><li>Operator DAN: minimum. Implikasi: minimum. Agregasi: maksimum.</li><li>Defuzzifikasi: centroid pada rentang skor 0–100.</li><li>Tren: kemiringan regresi linear nilai prevalensi per tahun.</li></ul></div>{% endblock %}
